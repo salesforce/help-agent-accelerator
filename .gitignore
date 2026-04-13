@@ -1,1 +1,17 @@
+# Salesforce
+.sf/
+.sfdx
+*.log
+localdevserver
+
+# Dependencies
+node_modules/
+
+# IDE
+.idea
+.vscode
+*.iml
+
+# OS
 .DS_Store
+Thumbs.db
