@@ -1,0 +1,56 @@
+<template>
+    <div class="container" style={containerStyle}>
+        <template lwc:if={isDebug}>
+            <button class="version-badge" onclick={handleVersionClick}>{version}</button>
+            <template lwc:if={perfSummary}>
+                <button class="perf-overlay" onclick={closePerfOverlay}>
+                    <pre class="perf-content">{perfSummary}</pre>
+                </button>
+            </template>
+        </template>
+        <div class={promptLayerClass}>
+            <div class="search-card slds-text-align_center">
+                <h1 class="search-heading slds-var-m-bottom_medium">{labels.HAA_heading}</h1>
+                <div class={inputRowClass}>
+                    <textarea lwc:ref="searchInput" class="search-input" rows="1"
+                        placeholder={labels.HAA_input_placeholder} value={searchQuery}
+                        oninput={handleQueryChange} onkeydown={handleKeyDown}
+                        aria-label={labels.HAA_input_ariaLabel}></textarea>
+                    <lightning-button-icon class={submitBtnClass} variant="brand" icon-name="utility:arrowup"
+                        alternative-text={labels.HAA_submit_altText} onclick={handleSubmit}
+                        disabled={isSubmitDisabled}></lightning-button-icon>
+                </div>
+                <template lwc:if={hasCannedPrompts}>
+                    <div class="canned-prompts slds-grid slds-wrap slds-grid_align-center slds-var-m-top_medium">
+                        <template for:each={cannedPrompts} for:item="prompt">
+                            <lightning-button class="canned-prompt-btn" variant="outline-brand" label={prompt}
+                                key={prompt} data-query={prompt} onclick={handleCannedPrompt}></lightning-button>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <div class={chatLayerClass}>
+            <template lwc:if={isLoading}>
+                <div class="chat-loading">
+                    <h1 class="loading-heading">{labels.HAA_heading}</h1>
+                    <div class="skeleton-row slds-grid skeleton-left">
+                        <c-haa-skeleton-loader></c-haa-skeleton-loader>
+                    </div>
+                    <div class="skeleton-row slds-grid skeleton-right slds-var-m-top_large">
+                        <c-haa-skeleton-loader reverse></c-haa-skeleton-loader>
+                    </div>
+                </div>
+            </template>
+            <template lwc:if={isError}>
+                <div class="chat-error slds-text-color_error">
+                    <p>{errorMessage}</p>
+                    <lightning-button variant="base" label={labels.HAA_retry_label} onclick={handleRetry}
+                        class="slds-m-top_small"></lightning-button>
+                </div>
+            </template>
+            <div lwc:ref="chatContainer" class="chat-container"></div>
+        </div>
+    </div>
+</template>

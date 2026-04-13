@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>HAA_canned_prompt_one</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Canned prompt number one, set value to &apos;skip&apos; if not required</shortDescription>
+        <value>Reset my password</value>
+    </labels>
+    <labels>
+        <fullName>HAA_canned_prompt_three</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Canned prompt number three, set value to &apos;skip&apos; if not required</shortDescription>
+        <value>Get product guidance</value>
+    </labels>
+    <labels>
+        <fullName>HAA_canned_prompt_two</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Canned prompt number two, set value to &apos;skip&apos; if not required</shortDescription>
+        <value>skip</value>
+    </labels>
+    <labels>
+        <fullName>HAA_error_bootstrapUnavailable</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inline Help error bootstrap unavailable</shortDescription>
+        <value>Embedded Messaging bootstrap not available. Check deployment and Site URL.</value>
+    </labels>
+    <labels>
+        <fullName>HAA_error_initFailed</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inline Help error init failed</shortDescription>
+        <value>Chat failed to initialize. Check the deployment configuration (Org ID, Deployment API Name, Site URL) and ensure the deployment is published.</value>
+    </labels>
+    <labels>
+        <fullName>HAA_error_invalidConfig</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inline Help error invalid config</shortDescription>
+        <value>Configure Org ID, Deployment API Name, and Site URL in component properties.</value>
+    </labels>
+    <labels>
+        <fullName>HAA_error_launchFailed</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inline Help error launch failed</shortDescription>
+        <value>Failed to open chat. Please try again.</value>
+    </labels>
+    <labels>
+        <fullName>HAA_error_launchUnavailable</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inline Help error launch unavailable</shortDescription>
+        <value>Chat launch API not available. Please try again.</value>
+    </labels>
+    <labels>
+        <fullName>HAA_error_noBootstrapUrl</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inline Help error no bootstrap URL</shortDescription>
+        <value>Could not determine bootstrap script URL. Provide a valid Site URL.</value>
+    </labels>
+    <labels>
+        <fullName>HAA_error_noContainer</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inline Help error no chat container</shortDescription>
+        <value>Chat container not found.</value>
+    </labels>
+    <labels>
+        <fullName>HAA_error_scriptLoadFailed</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inline Help error script load failed</shortDescription>
+        <value>Failed to load chat script. Verify Site URL.</value>
+    </labels>
+    <labels>
+        <fullName>HAA_error_timeout</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inline Help error timeout</shortDescription>
+        <value>Chat did not load in time. Please try again.</value>
+    </labels>
+    <labels>
+        <fullName>HAA_heading</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inline Help heading</shortDescription>
+        <value>How can we help?</value>
+    </labels>
+    <labels>
+        <fullName>HAA_input_ariaLabel</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inline Help input aria label</shortDescription>
+        <value>Ask a question</value>
+    </labels>
+    <labels>
+        <fullName>HAA_input_placeholder</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inline Help input placeholder</shortDescription>
+        <value>Type your question here...</value>
+    </labels>
+    <labels>
+        <fullName>HAA_loading_altText</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inline Help loading spinner alt text</shortDescription>
+        <value>Loading chat</value>
+    </labels>
+    <labels>
+        <fullName>HAA_retry_label</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inline Help retry button label</shortDescription>
+        <value>Try again</value>
+    </labels>
+    <labels>
+        <fullName>HAA_submit_altText</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inline Help submit button alt text</shortDescription>
+        <value>Submit</value>
+    </labels>
+</CustomLabels>

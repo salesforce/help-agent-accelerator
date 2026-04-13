@@ -1,0 +1,54 @@
+:host {
+    width: 100%;
+}
+
+.skeleton-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.skeleton-avatar {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #b8bae8;
+}
+
+.skeleton-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+}
+
+.skeleton-bar {
+    height: 16px;
+    border-radius: 24px;
+    width: 100%;
+    background: linear-gradient(110deg, #b8bae8 25%, #7b7fc4 50%, #b8bae8 75%);
+    background-size: 400% 100%;
+    animation: shimmer 1.8s linear infinite;
+}
+
+.skeleton-bar-short {
+    width: 66%;
+}
+
+.skeleton-wrapper-reverse {
+    flex-direction: row-reverse;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
