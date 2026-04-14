@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="orgId" type="String" label="Org ID" description="18-character Salesforce Org ID from the deployment Code Snippet." />
+            <property name="deploymentApiName" type="String" label="Deployment API Name" description="Embedded Service Deployment API Name from the Code Snippet." />
+            <property name="siteUrl" type="String" label="Site URL" description="Experience Cloud site base URL (e.g. https://yourdomain.my.site.com/your-site). No trailing slash." />
+            <property name="scrt2Url" type="String" label="SCRT URL" description="SCRT URL from the Code Snippet (e.g. https://yourdomain.my.salesforce-scrt.com). Leave blank if not in your snippet." default="" />
+            <property name="bootstrapScriptUrl" type="String" label="Bootstrap Script URL" description="Override URL for the bootstrap script. Leave blank to auto-derive from Site URL." default="" />
+            <property name="chatHeight" type="String" label="Chat Height" description="CSS height of the chat container (e.g. 550px, 80vh). Minimum 400px. Default 550px." default="550px" />
+            <property name="enableDebugLogs" type="Boolean" label="Enable Debug Logs" description="Logs lifecycle events to the browser console for troubleshooting." default="false" />
+            <property name="showCannedPrompts" type="Boolean" label="Show Canned Prompts" description="Show canned prompt buttons below the input field. Button labels are sourced from custom labels HAA_canned_prompt_one, HAA_canned_prompt_two, and HAA_canned_prompt_three. Set a label to 'skip' to hide that button." default="false" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
