@@ -13,8 +13,8 @@ Deploy an inline Agentforce chat experience — similar to [help.salesforce.com]
 - [Setup Steps](#setup-steps)
   - [Step 1 — Set Up the Help Agent](#step-1--set-up-the-help-agent)
   - [Step 2 — Create a Messaging Channel and Embedded Service Deployment](#step-2--create-a-messaging-channel-and-embedded-service-deployment)
-  - [Step 4a — Add to an Experience Cloud Site](#step-4a--add-to-an-experience-cloud-site)
-  - [Step 4b — Embed on a Third-Party Website](#step-4b--embed-on-a-third-party-website)
+  - [Step 3a — Add to an Experience Cloud Site](#step-3a--add-to-an-experience-cloud-site)
+  - [Step 3b — Embed on a Third-Party Website](#step-3b--embed-on-a-third-party-website)
 - [Customization](#customization)
 - [Troubleshooting](#troubleshooting)
 - [Documentation](#documentation)
@@ -223,7 +223,7 @@ The agent is now ready to use in your messaging channel (created in Step 2 below
 | **Site URL** | Third parameter of `init()` |
 | **SCRT URL** | `scrt2URL` in the options object (if present) |
 
-### Step 4a — Add to an Experience Cloud site
+### Step 3a — Add to an Experience Cloud site
 
 1. Go to **Setup → All Sites** and open **Builder** for your Experience Cloud site
 2. From the left-hand menu, select **Components** and drag the **Inline Agent Help** component to your desired location on the page
@@ -242,7 +242,7 @@ The agent is now ready to use in your messaging channel (created in Step 2 below
 
 4. **Save** and **Publish** the site
 
-### Step 4b — Embed on a third-party website
+### Step 3b — Embed on a third-party website
 
 Use the [`haaInlineEnhancedChat.js`](force-app/main/default/staticresources/haaInlineEnhancedChat.js) file — a single JS file with no dependencies. After installing the package (or deploying the repo), you can also find it in your org under **Setup → Static Resources → haaInlineEnhancedChat**.
 
