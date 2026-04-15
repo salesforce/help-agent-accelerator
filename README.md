@@ -12,8 +12,7 @@ Deploy an inline Agentforce chat experience — similar to [help.salesforce.com]
 - [Installation](#installation)
 - [Setup Steps](#setup-steps)
   - [Step 1 — Set Up the Help Agent](#step-1--set-up-the-help-agent)
-  - [Step 2 — Create a Messaging Channel](#step-2--create-a-messaging-channel)
-  - [Step 3 — Create an Embedded Service Deployment](#step-3--create-an-embedded-service-deployment)
+  - [Step 2 — Create a Messaging Channel and Embedded Service Deployment](#step-2--create-a-messaging-channel-and-embedded-service-deployment)
   - [Step 4a — Add to an Experience Cloud Site](#step-4a--add-to-an-experience-cloud-site)
   - [Step 4b — Embed on a Third-Party Website](#step-4b--embed-on-a-third-party-website)
 - [Customization](#customization)
@@ -46,7 +45,7 @@ All metadata in this package is prefixed with `haa` (**H**elp **A**gent **A**cce
 
 | Requirement | Notes |
 |-------------|-------|
-| **Enhanced Chat v2** | Requires an Embedded Service Deployment (see [Step 3](#step-3--create-an-embedded-service-deployment)). Contact your Salesforce account team to confirm your org's edition and licenses support this feature |
+| **Enhanced Chat v2** | Requires an Embedded Service Deployment (see [Step 2](#step-2--create-a-messaging-channel-and-embedded-service-deployment)). Contact your Salesforce account team to confirm your org's edition and licenses support this feature |
 
 ### By deployment path
 
@@ -204,26 +203,18 @@ The agent is now ready to use in your messaging channel (created in Step 2 below
 
 ---
 
-### Step 2 — Create a Messaging Channel
+### Step 2 — Create a Messaging Channel and Embedded Service Deployment
 
-1. Go to **Setup → Messaging Settings**
-2. Under **Channels**, click **New Channel**
-3. Click **Start**, then choose **Enhanced Chat**
-4. Fill in the channel details:
+1. Go to **App Launcher → Agentforce Studio → Agents → HAA Help Agent**
+2. Go to **Explorer** (left side menu) → **Connections** → hover over Connections and click the **Plus sign** → **Add Connections** → Select **Enhanced Chat v2** and click **Add to Agent**
+3. Under **Enhanced Chat Channels**, click the button **New Channel** and fill out the details in the pop-up window:
    - **Channel Name** — e.g. "Inline Agentforce Chat"
    - **Developer Name** — auto-populated from Channel Name
-5. Complete the remaining wizard steps
-6. Under **Routing**, link the channel to the **HAA Help Agent** from Step 1
-7. Click **Save**
-8. On the channel detail page, click **Activate** to enable the channel
-
-### Step 3 — Create an Embedded Service Deployment
-
-1. Go to **Setup → Embedded Service Deployments**
-2. Select the deployment with the channel name from Step 2
-3. Click **Switch to V2**
-4. Click **Switch & Publish** in the modal window
-5. Open the **Code Snippet** tab and note the following values — you'll need them in the next steps:
+   - **Domain** — Enter the domain name for the entire site where your customers chat. For example, yourcompany.com
+   - **Fallback Queue** — Choose a queue to ensure the conversation is routed successfully if your agent is unavailable or is unable to connect. The queue you choose must have the Messaging Session object added as a supported object.
+4. Click **Create Channel** — This process can take up to 10 minutes. Once the channel and deployment are created you will see a confirmation message in the pop-up window
+5. Exit the pop-up window, save your Agent, and commit a new Version
+6. Go to **Setup → Embedded Service Deployments → Your Deployment → Code Snippet** and note the following values — you'll need them in the next steps:
 
 | Value | Where to find it |
 |-------|-------------------|
