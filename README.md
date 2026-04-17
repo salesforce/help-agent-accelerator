@@ -174,17 +174,17 @@ The agent's user needs permission to access Knowledge articles:
 1. Go to **Setup → Permission Sets**
 2. Find **Agentforce Agent haaHelpAgent Permissions** (auto-created when you deployed the agent)
 3. Configure Knowledge access:
-   
+
    **Data Category Visibility:**
    - Click **Edit** next to each category group
    - Select appropriate visibility settings for the data categories containing your Knowledge articles
-   
+
    **Object Settings:**
    - Click **Knowledge (Knowledge__kav)**
    - Ensure the permission set includes:
      - Read access to the object
      - Read access to all relevant fields (Title, Summary, your content field)
-   
+
    **App Permissions:**
    - Select **Allow View Knowledge**
 
@@ -205,7 +205,7 @@ The agent is now ready to use in your messaging channel (created in Step 2 below
 
 ### Step 2 — Create a Messaging Channel and Embedded Service Deployment
 
-1. Go to **App Launcher → Agentforce Studio → Agents → HAA Help Agent**
+1. Go to **App Launcher → Agentforce Studio → Agents → HAA Help Agent —> Click New Version**
 2. Go to **Explorer** (left side menu) → **Connections** → hover over Connections and click the **Plus sign** → **Add Connections** → Select **Enhanced Chat v2** and click **Add to Agent**
 3. Under **Enhanced Chat Channels**, click the button **New Channel** and fill out the details in the pop-up window:
    - **Channel Name** — e.g. "Inline Agentforce Chat"
