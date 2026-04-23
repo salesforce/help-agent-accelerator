@@ -107,6 +107,8 @@ const IFRAME_MAX_WAIT_MS = 6000;
 const DEFAULT_CHAT_HEIGHT = "550px";
 const MIN_CHAT_HEIGHT_PX = 400;
 const VERSION = "v1.03";
+const PREVIEW_ERROR_MSG =
+  "Chat is not available in the Experience Builder or preview environments. To test this component, publish the site and visit the published URL.";
 
 export default class HaaInlineEnhancedChat extends LightningElement {
   @api orgId;
@@ -135,6 +137,7 @@ export default class HaaInlineEnhancedChat extends LightningElement {
   _launchFallbackId = null;
   _sendFallbackId = null;
   _chatRevealed = false;
+  _isPreviewError = false;
   _boundListeners = {};
 
   // --- Computed properties ---
@@ -160,6 +163,10 @@ export default class HaaInlineEnhancedChat extends LightningElement {
 
   get isError() {
     return this._state === STATE.ERROR;
+  }
+
+  get showRetryButton() {
+    return !this._isPreviewError;
   }
 
   _isMultiline = false;
@@ -277,6 +284,11 @@ export default class HaaInlineEnhancedChat extends LightningElement {
 
   connectedCallback() {
     this._debug("version", VERSION);
+    if (this._isSitePreview()) {
+      this._isPreviewError = true;
+      this._dispatch(EVT.INIT_ERROR, { message: PREVIEW_ERROR_MSG });
+      return;
+    }
     if (this._hasValidConfig()) {
       this._loadBootstrapScript();
     }
@@ -388,6 +400,7 @@ export default class HaaInlineEnhancedChat extends LightningElement {
         this._pendingQuery = "";
         this.errorMessage = "";
         this._chatRevealed = false;
+        this._isPreviewError = false;
         break;
 
       default:
@@ -476,6 +489,12 @@ export default class HaaInlineEnhancedChat extends LightningElement {
     const query = (this.searchQuery || "").trim();
     if (!query) return;
 
+    if (this._isSitePreview()) {
+      this._isPreviewError = true;
+      this._dispatch(EVT.INIT_ERROR, { message: PREVIEW_ERROR_MSG });
+      return;
+    }
+
     if (!this._hasValidConfig()) {
       this._dispatch(EVT.INIT_ERROR, {
         message: this.labels.HAA_error_invalidConfig
@@ -519,10 +538,10 @@ export default class HaaInlineEnhancedChat extends LightningElement {
       this._initChat();
     };
     script.onerror = () => {
+      const isPreview = this._isSitePreview();
+      if (isPreview) this._isPreviewError = true;
       this._dispatch(EVT.INIT_ERROR, {
-        message: this._isSitePreview()
-          ? "Chat is not available in Experience Builder preview. Publish the site to test."
-          : this.labels.HAA_error_scriptLoadFailed
+        message: isPreview ? PREVIEW_ERROR_MSG : this.labels.HAA_error_scriptLoadFailed
       });
     };
     document.body.appendChild(script);
@@ -909,12 +928,15 @@ export default class HaaInlineEnhancedChat extends LightningElement {
   }
 
   _isSitePreview() {
+    // Match known Salesforce Experience Cloud builder/preview domains.
+    // Anchoring to salesforce-experience.com avoids false positives on
+    // customer-owned domains that might contain words like "preview" or "live".
     return [
-      "sitepreview",
-      "livepreview",
-      "live-preview",
-      "live.",
-      ".builder."
+      ".builder.salesforce-experience.com",
+      ".preview.salesforce-experience.com",
+      ".live-preview.salesforce-experience.com",
+      ".livepreview.salesforce-experience.com",
+      ".sitepreview.salesforce-experience.com"
     ].some((s) => document.URL.includes(s));
   }
 

@@ -329,6 +329,14 @@ The component inherits colors and fonts from your site theme automatically via S
 
 ## Troubleshooting
 
+### Component shows an error in Experience Builder or preview
+
+This is expected behaviour. The component displays an informational message — _"Chat is not available in the Experience Builder or preview environments. To test this component, publish the site and visit the published URL."_ — in all Experience Builder and preview environments. No "Try again" button is shown because retrying will not help.
+
+This is a Salesforce platform limitation: the Embedded Service bootstrap script and the SCRT configuration API are both served from the published site's domain (`*.my.site.com`), and Salesforce's own CORS and CSP policies block requests originating from the preview domains (`*.salesforce-experience.com`). There is no workaround at the component level.
+
+To test the component, publish your Experience Cloud site and visit the published URL.
+
 - **Chat not loading** — Verify Org ID, Deployment API Name, and Site URL match the Code Snippet exactly. Check that the deployment is published and the messaging channel is active.
 - **Timeout error** — Enable debug logs and check the browser console for which lifecycle event didn't fire. Common causes: deployment not published, site URL mismatch, or messaging channel not activated.
 - **CORS / frame-ancestors errors** (third-party embed) — Add your hosting domain to the deployment's Trusted Domains in Setup.

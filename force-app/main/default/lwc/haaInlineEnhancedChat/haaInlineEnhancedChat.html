@@ -46,8 +46,10 @@
             <template lwc:if={isError}>
                 <div class="chat-error slds-text-color_error">
                     <p>{errorMessage}</p>
-                    <lightning-button variant="base" label={labels.HAA_retry_label} onclick={handleRetry}
-                        class="slds-m-top_small"></lightning-button>
+                    <template lwc:if={showRetryButton}>
+                        <lightning-button variant="base" label={labels.HAA_retry_label} onclick={handleRetry}
+                            class="slds-m-top_small"></lightning-button>
+                    </template>
                 </div>
             </template>
             <div lwc:ref="chatContainer" class="chat-container"></div>
