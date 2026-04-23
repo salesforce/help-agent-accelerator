@@ -1,6 +1,7 @@
 # Inline Agentforce Chat — Accelerator Package
 
 Deploy an inline Agentforce chat experience — similar to [help.salesforce.com](https://help.salesforce.com) — on your own Experience Cloud site or third-party website. This package gives Salesforce customers and partners a ready-to-use starting point: UI components, a third-party embed script, and a pre-configured Agentforce agent, so you can go from zero to a working inline chat in minutes instead of hours.
+**[See it in action](https://salesforce.vidyard.com/watch/xox5QBfTWc2D2VeqLJ6aMi)**
 
 ---
 
@@ -27,7 +28,7 @@ All metadata in this package is prefixed with `haa` (**H**elp **A**gent **A**cce
 
 ---
 
-## What's included
+## What's Included
 
 | Component | Type | Description |
 |-----------|------|-------------|
@@ -70,6 +71,8 @@ The package includes an optional pre-configured agent (`haaHelpAgent`). If you u
 
 ### Source deploy via Salesforce CLI
 
+**[Follow along with this setup video](https://salesforce.vidyard.com/watch/gqYPELEfErfLh5qkdd1aau)**
+
 ```bash
 git clone <this-repo>
 cd help-agent-accelerator
@@ -86,8 +89,7 @@ After installing the package, complete these steps to wire everything together.
 
 The package includes a pre-configured Agentforce agent (`haaHelpAgent`) that answers customer questions using knowledge articles. Follow the instructions below to configure it.
 
-> **Note:** Setting up Data Cloud can take a very long time (30+ minutes to hours). Start this process early or do it ahead of time.
-
+> **Note:** Complete your Data Cloud setup ahead of time so you're ready to hit the ground running. 
 > **Important:** The Help Agent requires Knowledge articles to function. You must create Knowledge articles in your org with appropriate content fields before setting up the agent. The agent searches these articles to answer questions.
 
 #### Prerequisites
@@ -212,9 +214,22 @@ The agent is now ready to use in your messaging channel (created in Step 2 below
    - **Developer Name** — auto-populated from Channel Name
    - **Domain** — Enter the domain name for the entire site where your customers chat. For example, yourcompany.com
    - **Fallback Queue** — Choose a queue to ensure the conversation is routed successfully if your agent is unavailable or is unable to connect. The queue you choose must have the Messaging Session object added as a supported object.
-4. Click **Create Channel** — This process can take up to 10 minutes. Once the channel and deployment are created you will see a confirmation message in the pop-up window
-5. Exit the pop-up window, save your Agent, and commit a new Version
-6. Go to **Setup → Embedded Service Deployments → Your Deployment → Code Snippet** and note the following values — you'll need them in the next steps:
+4. Create the Routing Configuration by going to **Setup → search for Routing Configurations → New**. Fill in:
+   - **Name** — e.g. Messaging Routing Config
+   - **Developer Name** — auto-filled
+   - **Routing Priority** — (your choice)
+   - **Routing Model** — (your choice)
+   - **Units of Capacity** — (your choice)
+
+   Click **Save**
+5. Assign the Routing Configuration to the Fallback Queue:
+   - Open your **Fallback Queue**
+   - Set the **Routing Configuration** field to the one you just created
+   - Make sure **Messaging Session** is listed under **Supported Objects** — add it if not
+   - **Save**
+6. Click **Create Channel** — This process can take up to 10 minutes. Once the channel and deployment are created you will see a confirmation message in the pop-up window
+7. Exit the pop-up window, save your Agent, and commit a new Version
+8. Go to **Setup → Embedded Service Deployments → Your Deployment → Code Snippet** and note the following values — you'll need them in the next steps:
 
 | Value | Where to find it |
 |-------|-------------------|
