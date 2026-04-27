@@ -89,7 +89,7 @@ After installing the package, complete these steps to wire everything together.
 
 The package includes a pre-configured Agentforce agent (`haaHelpAgent`) that answers customer questions using knowledge articles. Follow the instructions below to configure it.
 
-> **Note:** Complete your Data Cloud setup ahead of time so you're ready to hit the ground running. 
+> **Note:** Complete your Data Cloud setup ahead of time so you're ready to hit the ground running.
 > **Important:** The Help Agent requires Knowledge articles to function. You must create Knowledge articles in your org with appropriate content fields before setting up the agent. The agent searches these articles to answer questions.
 
 #### Prerequisites
@@ -318,7 +318,7 @@ EnhancedChatInline.init({
 All UI text is externalized as Salesforce custom labels prefixed with `HAA_`. Edit them in **Setup → Custom Labels**:
 
 - **Heading, placeholder, button text** — `HAA_heading`, `HAA_input_placeholder`, `HAA_submit_altText`, etc.
-- **Error messages** — `HAA_error_timeout`, `HAA_error_scriptLoadFailed`, `HAA_error_launchFailed`, etc.
+- **Error messages** — `HAA_error_timeout`, `HAA_error_scriptLoadFailed`, `HAA_error_launchFailed`, `HAA_error_previewEnvironment` (shown in Experience Builder and preview environments only), etc.
 - **Canned prompts** — `HAA_canned_prompt_one`, `HAA_canned_prompt_two`, `HAA_canned_prompt_three`. Set any label value to `skip` to hide that button.
 
 ### Styling

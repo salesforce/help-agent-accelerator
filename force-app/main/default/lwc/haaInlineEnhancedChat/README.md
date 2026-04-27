@@ -38,7 +38,7 @@ The component is a Salesforce LWC (Lightning Web Component) that embeds Agentfor
 | LAUNCHING | Skeleton loader | `utilAPI.launchChat()` called, waiting for `ConversationOpened` event |
 | SENDING | Skeleton loader | Conversation opened, waiting for `FirstBotMessageSent`, then `sendTextMessage()` |
 | ACTIVE | Chat iframe (crossfade from skeleton) | Message sent, iframe polled and revealed, timers cleared |
-| ERROR | Error message + "Try again" | Failure occurred (timeout, init error, API rejection) |
+| ERROR | Error message + "Try again" (hidden for preview errors) | Failure occurred (timeout, init error, API rejection, or preview environment detected) |
 
 ### Transition Table
 
@@ -146,7 +146,8 @@ When the page reloads with an existing session in localStorage:
 | `HAA_submit_altText` | Submit button alt text |
 | `HAA_loading_altText` | Loading spinner alt text |
 | `HAA_retry_label` | Retry button label |
-| `HAA_error_*` | Error messages (7 variants) |
+| `HAA_error_*` | Error messages (8 variants) |
+| `HAA_error_previewEnvironment` | Only shown in Experience Builder and preview environments where chat fails to load |
 | `HAA_canned_prompt_one/two/three` | Canned prompt button labels (set to `skip` to hide) |
 
 ## Child Components
@@ -177,15 +178,8 @@ Used on **window close** (`onEmbeddedMessagingWindowClosed` → `CONV_CLOSED`). 
 
 Used only in **`disconnectedCallback`** when the component is destroyed. Removes event listeners, global DOM injected by the bootstrap outside the shadow DOM (FAB, overlays, iframes, styles via broad `querySelectorAll`), and resets all internal flags. This is not used on conversation close because the aggressive global DOM removal breaks recovery under Lightning Web Security (LWS), and LWS cannot be reliably detected at runtime.
 
-## Known Issues
+## Experience Builder and Preview Environments
 
-### Experience Builder Preview CORS Error
+The component detects all Salesforce Experience Cloud builder and preview domains (`*.builder.salesforce-experience.com`, `*.preview.salesforce-experience.com`, `*.live-preview.salesforce-experience.com`, etc.) and immediately shows the `HAA_error_previewEnvironment` label message without attempting to load the bootstrap. This is intentional — the Embedded Service bootstrap and SCRT configuration API are served from the published site domain (`*.my.site.com`) and Salesforce's own CORS and CSP policies block requests from preview origins. The "Try again" button is hidden in this state since retrying will not help.
 
-The Experience Builder preview domain (`*.live-preview.salesforce-experience.com`) is a different origin from the actual site (`*.my.site.com`). This causes CORS errors when the component tries to load `bootstrap.min.js`:
-
-```
-Access to fetch at '...bootstrap.min.js' from origin '...live-preview.salesforce-experience.com'
-has been blocked by CORS policy
-```
-
-**Workaround:** Publish the site and test on the actual `*.my.site.com` domain. The preview environment does not fully support cross-origin embedded messaging.
+To test the component, publish the site and visit the published URL.

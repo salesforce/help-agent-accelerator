@@ -81,6 +81,14 @@
         <value>Chat container not found.</value>
     </labels>
     <labels>
+        <fullName>HAA_error_previewEnvironment</fullName>
+        <categories>HAA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inline Help error preview environment</shortDescription>
+        <value>Chat is not available in the Experience Builder or preview environments. To test this component, publish the site and visit the published URL.</value>
+    </labels>
+    <labels>
         <fullName>HAA_error_scriptLoadFailed</fullName>
         <categories>HAA</categories>
         <language>en_US</language>

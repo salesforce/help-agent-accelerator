@@ -17,6 +17,7 @@ import HAA_error_timeout from "@salesforce/label/c.HAA_error_timeout";
 import HAA_canned_prompt_one from "@salesforce/label/c.HAA_canned_prompt_one";
 import HAA_canned_prompt_two from "@salesforce/label/c.HAA_canned_prompt_two";
 import HAA_canned_prompt_three from "@salesforce/label/c.HAA_canned_prompt_three";
+import HAA_error_previewEnvironment from "@salesforce/label/c.HAA_error_previewEnvironment";
 
 // --- States ---
 const STATE = Object.freeze({
@@ -106,9 +107,7 @@ const IFRAME_POLL_MS = 120;
 const IFRAME_MAX_WAIT_MS = 6000;
 const DEFAULT_CHAT_HEIGHT = "550px";
 const MIN_CHAT_HEIGHT_PX = 400;
-const VERSION = "v1.03";
-const PREVIEW_ERROR_MSG =
-  "Chat is not available in the Experience Builder or preview environments. To test this component, publish the site and visit the published URL.";
+const VERSION = "v1.04";
 
 export default class HaaInlineEnhancedChat extends LightningElement {
   @api orgId;
@@ -229,7 +228,8 @@ export default class HaaInlineEnhancedChat extends LightningElement {
     HAA_error_timeout,
     HAA_canned_prompt_one,
     HAA_canned_prompt_two,
-    HAA_canned_prompt_three
+    HAA_canned_prompt_three,
+    HAA_error_previewEnvironment
   };
 
   get _isCannedPromptsEnabled() {
@@ -286,7 +286,7 @@ export default class HaaInlineEnhancedChat extends LightningElement {
     this._debug("version", VERSION);
     if (this._isSitePreview()) {
       this._isPreviewError = true;
-      this._dispatch(EVT.INIT_ERROR, { message: PREVIEW_ERROR_MSG });
+      this._dispatch(EVT.INIT_ERROR, { message: this.labels.HAA_error_previewEnvironment });
       return;
     }
     if (this._hasValidConfig()) {
@@ -491,7 +491,7 @@ export default class HaaInlineEnhancedChat extends LightningElement {
 
     if (this._isSitePreview()) {
       this._isPreviewError = true;
-      this._dispatch(EVT.INIT_ERROR, { message: PREVIEW_ERROR_MSG });
+      this._dispatch(EVT.INIT_ERROR, { message: this.labels.HAA_error_previewEnvironment });
       return;
     }
 
@@ -541,7 +541,7 @@ export default class HaaInlineEnhancedChat extends LightningElement {
       const isPreview = this._isSitePreview();
       if (isPreview) this._isPreviewError = true;
       this._dispatch(EVT.INIT_ERROR, {
-        message: isPreview ? PREVIEW_ERROR_MSG : this.labels.HAA_error_scriptLoadFailed
+        message: isPreview ? this.labels.HAA_error_previewEnvironment : this.labels.HAA_error_scriptLoadFailed
       });
     };
     document.body.appendChild(script);
