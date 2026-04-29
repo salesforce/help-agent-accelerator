@@ -35,7 +35,7 @@ All metadata in this package is prefixed with `haa` (**H**elp **A**gent **A**cce
 | `haaInlineEnhancedChat` | LWC | Primary inline chat component with prompt bar, state machine, canned prompts, and skeleton loading |
 | `haaSkeletonLoader` | LWC | Animated placeholder rows shown during loading |
 | `haaInlineEnhancedChat` | Static Resource (JS) | Standalone script to embed inline chat on any third-party website — no build step required |
-| Custom Labels | 18 labels (`HAA_*`) | All UI text, error messages, and canned prompt strings — fully customizable |
+| Custom Labels | 19 labels (`HAA_*`) | All UI text, error messages, and canned prompt strings — fully customizable |
 | `haaHelpAgent` | AI Authoring Bundle | *(Optional)* Pre-configured Agentforce agent with RAG-based knowledge search, general FAQ topic, escalation handling, and off-topic redirection. Requires Knowledge articles and Data Cloud setup |
 
 ---

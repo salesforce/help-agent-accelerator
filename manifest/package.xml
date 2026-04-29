@@ -20,6 +20,7 @@
         <members>HAA_error_initFailed</members>
         <members>HAA_error_launchUnavailable</members>
         <members>HAA_error_launchFailed</members>
+        <members>HAA_error_previewEnvironment</members>
         <members>HAA_error_timeout</members>
         <members>HAA_canned_prompt_one</members>
         <members>HAA_canned_prompt_two</members>
