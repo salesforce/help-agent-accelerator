@@ -239,17 +239,18 @@ The agent is now ready to use in your messaging channel (created in Step 2 below
 7. Fill out the details in the pop-up window:
    - **Channel Name** — e.g. "Inline Agentforce Chat"
    - **Developer Name** — auto-populated from Channel Name
-   - ****Domain** — Enter the domain name for the entire website that will include the chat (e.g., yourcompany.com)**
+   - **Domain** — Enter the domain name for the entire website that will include the chat (e.g., yourcompany.com)
    - **Fallback Queue** — Choose the queue you configured in step 2.2 above
 8. Click **Create Channel** — This process can take up to 10 minutes. Wait for the confirmation message in the pop-up window.
 9. Once complete, exit the pop-up window, save your Agent, and commit a new Version
+10. Go to **Setup → Embedded Service Deployments** and open your newly created deployment
+11. Scroll down and open **Test Enhanced Web Chat** and check if the chat icon is present in the bottom-right corner of the page.
 
 #### 2.4. Copy the Deployment Details
 
-1. Go to **Setup → Embedded Service Deployments**
-2. Open your newly created deployment
-3. Click **Code Snippet**
-4. Note the following values — you'll need them in Step 3:
+1. If not already in, go to **Setup → Embedded Service Deployments** and open your newly created deployment
+2. Click **Code Snippet**
+3. Note the following values — you'll need them in Step 3:
 
 | Value | Where to find it |
 |-------|-------------------|
